@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   web:
-    image: <docker-image>:<tag>
+    image: pablitx/dcrd-umbrel:1.7.1
     restart: on-failure
     stop_grace_period: 1m
     ports:
