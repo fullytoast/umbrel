@@ -2,7 +2,7 @@
 set -e
 
 #checks to see if cert/key exist, creates if missinn
-if [[ ! -f /config/dcrd.cert || ! -f /config/dcrd.key ]]; then
+if [[ ! -f /storage/certs/dcrd.cert || ! -f /storage/certs/dcrd.key ]]; then
   gencerts -H=10.21.21.95 -f /storage/dcrd.cert /storage/dcrd.key
   echo "## Generating RPC certificate and key ###"
 fi
@@ -12,8 +12,8 @@ echo "## Start dcrd ##"
 dcrd_options=(
   --datadir=/storage/dcrd
   --logdir=/storage/logs
-  --rpccert=/storage/dcrd.cert
-  --rpckey=/storage/dcrd.key
+  --rpccert=/storage/certs/dcrd.cert
+  --rpckey=/storage/certs/dcrd.key
   --rpcuser=testuser
   --rpcpass=testpass
   --rpclisten=:9109

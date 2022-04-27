@@ -15,7 +15,7 @@ services:
     volumes:
       - ${APP_DATA_DIR}/data:/storage/dcrd
       - ${APP_DATA_DIR}/logs:/storage/logs
-      - ${APP_DATA_DIR}:/storage
+      - ${APP_DATA_DIR}:/storage/certs
     networks:
         default:
           ipv4_address: $APP_DECRED_DCRD_IP

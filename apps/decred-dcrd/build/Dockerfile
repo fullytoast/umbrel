@@ -25,4 +25,5 @@ COPY --from=gobuild /go/bin/* /bin/
 COPY    ./start-dcrd.sh /start-dcrd.sh
 RUN     chmod +x /start-dcrd.sh && \
         mkdir -p /storage/dcrd && \
-        mkdir /storage/logs
+        mkdir /storage/logs && \
+        mkdir /storage/certs
