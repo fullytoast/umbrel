@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 set -e
 
 #checks to see if cert/key exist, creates if missinn
