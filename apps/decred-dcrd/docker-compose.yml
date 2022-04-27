@@ -1,16 +1,21 @@
-version: "3.7"
+version: "3.9"
 
 services:
-  web:
-    image: pablitx/dcrd-umbrel:1.7.1
+  dcrd:
+    image: "dcrd:1.7.1"
+    container_name: dcrd
+    restart: unless-stopped
+    build:
+       context: ./build
     user: "1000:1000"
-    restart: on-failure
     stop_grace_period: 1m
     ports:
       - $APP_DECRED_DCRD_P2P_PORT:$APP_DECRED_DCRD_P2P_PORT
       - $APP_DECRED_DCRD_RPC_PORT:$APP_DECRED_DCRD_RPC_PORT
     volumes:
-      - ${APP_DATA_DIR}/data/:/home/decred/.dcrd/
+      - ${APP_DATA_DIR}/data:/storage/dcrd
+      - ${APP_DATA_DIR}/logs:/storage/logs
+      - ${APP_DATA_DIR}:/storage
     networks:
         default:
           ipv4_address: $APP_DECRED_DCRD_IP
