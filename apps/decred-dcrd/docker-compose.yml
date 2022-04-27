@@ -3,24 +3,14 @@ version: "3.7"
 services:
   web:
     image: pablitx/dcrd-umbrel:1.7.1
+    user: "1000:1000"
     restart: on-failure
     stop_grace_period: 1m
     ports:
-      # Replace <port> with the port that your app's web server
-      # is listening inside the Docker container. If you need to
-      # expose more ports, add them below.
-      - 9108:9108
-      - 9109:9109
+      - $APP_DECRED_DCRD_P2P_PORT:$APP_DECRED_DCRD_P2P_PORT
+      - $APP_DECRED_DCRD_RPC_PORT:$APP_DECRED_DCRD_RPC_PORT
     volumes:
-      # Uncomment to mount your data directories inside
-      # the Docker container for storing persistent data
       - ${APP_DATA_DIR}/data/:/home/decred/.dcrd/
-      # - ${APP_DATA_DIR}/bar:/bar
-
-      # Uncomment to mount LND's data directory as read-only
-      # inside the Docker container at path /lnd
-      # - ${LND_DATA_DIR}:/lnd:ro
-
-      # Uncomment to mount Bitcoin Core's data directory as
-      # read-only inside the Docker container at path /bitcoin
-      # - ${BITCOIN_DATA_DIR}:/bitcoin:ro
+    networks:
+        default:
+          ipv4_address: $APP_DECRED_DCRD_IP
