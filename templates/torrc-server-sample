@@ -233,3 +233,7 @@ HiddenServicePort 80 <app-agora-ip>:80
 # sparkkiosk Hidden Service
 HiddenServiceDir /data/app-sparkkiosk
 HiddenServicePort 80 <app-sparkkiosk-ip>:21214
+
+# decred-dcrd Hidden Service
+HiddenServiceDir /data/app-decred-dcrd
+HiddenServicePort 9108 <app-decred-dcrd-ip>:9108
