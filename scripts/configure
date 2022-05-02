@@ -529,7 +529,7 @@ for template in "${NGINX_CONF_FILE}" "${BITCOIN_CONF_FILE}" "${LND_CONF_FILE}" "
   sed -i "s/<app-sparkkiosk-port>/${APP_SPARKKIOSK_PORT}/g" "${template}"
   sed -i "s/<app-decred-dcrd-ip>/${APP_DECRED_DCRD_IP}/g" "${template}"
   sed -i "s/<app-decred-dcrd-p2p-port>/${APP_DECRED_DCRD_P2P_PORT}/g" "${template}"
-  set -i "s/<app-decred-dcrd-rpc-port>/${APP_DECRED_DCRD_RPC_PORT}/g" "${template}"
+  sed -i "s/<app-decred-dcrd-rpc-port>/${APP_DECRED_DCRD_RPC_PORT}/g" "${template}"
 done
 
 ##########################################################
