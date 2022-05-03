@@ -1064,7 +1064,7 @@
         "path": "",
         "deterministicPassword": true,
         "torOnly": false
-    }
+    },
     {
         "id": "dcrd",
         "category": "Decred",
