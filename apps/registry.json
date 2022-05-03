@@ -1064,24 +1064,5 @@
         "path": "",
         "deterministicPassword": true,
         "torOnly": false
-    },
-    {
-        "id": "dcrd",
-        "category": "Decred",
-        "name": "dcrd",
-        "version": "v1.7.1",
-        "tagline": "Decred full node implementation",
-        "description": "dcrd is a full node implementation of Decred written in Go (golang).\n\nIt acts as a fully-validating chain daemon for the Decred cryptocurrency. dcrd maintains the entire past transactional ledger of Decred and allows relaying of transactions to other Decred nodes around the world.\n\nThis software is currently under active development. It is extremely stable and has been in production use since February 2016.\n\nIt important to note that dcrd does NOT include wallet functionality. Users who desire a wallet will need to use dcrwallet(CLI) or Decrediton(GUI).",
-        "developer": "decred",
-        "website": "https://github.com/decred/dcrd",
-        "dependencies": [
-            "tor"
-        ],
-        "repo": "https://github.com/decred/dcrd",
-        "support": "https://decred.org/community/",
-        "port": 9108,
-        "path": "",
-        "deterministicPassword": true,
-        "torOnly": false
     }
 ]
