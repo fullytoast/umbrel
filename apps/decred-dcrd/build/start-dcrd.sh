@@ -3,7 +3,7 @@ set -e
 
 #checks to see if cert/key exist, creates if missinn
 if [[ ! -f /storage/certs/dcrd.cert || ! -f /storage/certs/dcrd.key ]]; then
-  gencerts -H=10.21.21.95 -f /storage/dcrd.cert /storage/dcrd.key
+  gencerts -H=10.21.21.95 -f /storage/certs/dcrd.cert /storage/certs/dcrd.key
   echo "## Generating RPC certificate and key ###"
 fi
 
