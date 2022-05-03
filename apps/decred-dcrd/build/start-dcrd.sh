@@ -4,14 +4,14 @@ set -e
 #checks to see if cert/key exist, creates if missinn
 if [[ ! -f /storage/certs/dcrd.cert || ! -f /storage/certs/dcrd.key ]]; then
   gencerts -H=$APP_DECRED_DCRD_IP -f /storage/certs/dcrd.cert /storage/certs/dcrd.key
-  echo "## RPC certificate and key not found, generating... ##\n"
+  echo "## RPC certificate and key not found, generating... ##"
 fi
 
 echo "## dcrd tor hidden service onion address ##"
-echo "   $APP_HIDDEN_SERVICE\n"
+echo "   $APP_HIDDEN_SERVICE"
 
 # Set dcrd options
-echo "## Starting dcrd... ##\n"
+echo "## Starting dcrd... ##"
 dcrd_options=(
   --datadir=/storage/dcrd
   --logdir=/storage/logs
