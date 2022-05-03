@@ -10,6 +10,10 @@ services:
     command: /start-dcrd.sh
 #    user: "1000:1000"
     stop_grace_period: 1m
+    environment:
+      APP_DECRED_DCRD_IP: $APP_DECRED_DCRD_IP
+      APP_DECRED_DCRD_RPC_PORT: $APP_DECRED_DCRD_RPC_PORT
+      APP_HIDDEN_SERVICE: $APP_HIDDEN_SERVICE
     ports:
       - $APP_DECRED_DCRD_P2P_PORT:$APP_DECRED_DCRD_P2P_PORT
       - $APP_DECRED_DCRD_RPC_PORT:$APP_DECRED_DCRD_RPC_PORT
