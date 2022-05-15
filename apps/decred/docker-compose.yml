@@ -18,9 +18,60 @@ services:
       - $APP_DECRED_DCRD_P2P_PORT:$APP_DECRED_DCRD_P2P_PORT
       - $APP_DECRED_DCRD_RPC_PORT:$APP_DECRED_DCRD_RPC_PORT
     volumes:
-      - ${APP_DATA_DIR}/data:/storage/dcrd
+      - ${APP_DATA_DIR}/dcrd:/storage/dcrd
       - ${APP_DATA_DIR}/logs:/storage/logs
       - ${APP_DATA_DIR}:/storage/certs
     networks:
         default:
           ipv4_address: $APP_DECRED_DCRD_IP
+
+   postgres:
+    image: "postgres:${POSTGRES_VERSION}"
+    container_name: postgres
+    build:
+      context: ./decred/postgres
+     env_file:
+      - database.env
+      - ./.env
+    restart: always
+    command: /start-postgresql.sh
+    expose: 
+      - $APP_DECRED_POSTGRES_PORT
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "10"
+    networks:
+      default:
+        ipv4_address: $APP_DECRED_POSTGRES_IP
+    volumes:
+      - ${FSCONF_LOC}:/config
+      - ${APP_DATA_DIR}/postgres:/storage
+
+    dcrdata:
+      image: "dcrdata:${DCRDATA_VERSION}"
+      container_name: dcrdata
+      # add start that check for dcrd rpc connection. see dojo example.
+      build:
+        context: ./decred/dcrdata
+      env_file:
+        - ./.env
+      restart: always
+      command: /start-dcrdata.sh
+      depends_on:
+        - postgres
+        - dcrd
+      ports:
+        - $APP_DECRED_DCRDATA_PORT:$APP_DECRED_DCRDATA_PORT
+      logging:
+        driver: "json-file"
+        options:
+          max-size: "20m"
+          max-file: "10"
+      networks:
+        default:
+          ipv4_address: $APP_DECRED_DCRDATA_IP
+      volumes:
+        - ${FSCONF_LOC}:/config
+        - ${APP_DATA_DIR}/dcrdata:/storage
