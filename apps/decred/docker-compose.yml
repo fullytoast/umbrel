@@ -6,7 +6,7 @@ services:
     container_name: dcrd
     restart: unless-stopped
     build:
-       context: ./decred-dcrd/build
+       context: ./decred/dcrd
     command: /start-dcrd.sh
 #    user: "1000:1000"
     stop_grace_period: 1m
